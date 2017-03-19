@@ -10,7 +10,7 @@ import org.testng.Assert;
 
 public class TestWaits {
 		
-		//WebDriver driver;
+		String actual;
 	
 		@BeforeClass
 		public void driverSetting() {
@@ -24,8 +24,6 @@ public class TestWaits {
 	
 		@Test
 		public void testImpliWait() {
-			
-			String actual;
 			Waits wt = new Waits();
 			
 			actual = wt.implicitWait();
@@ -36,19 +34,16 @@ public class TestWaits {
 		@Test
 		public void testExplicitwt() {
 			Waits wt = new Waits();
-			wt.explicitWait();
+			
+			actual = wt.explicitWait();
+			Assert.assertEquals("jumbo", actual);
 		}
 		
 	
 		@Test
 		public void testfluentWait() {
 			Waits wt = new Waits();
+			
 			wt.fluentWait();
 		}
-		
-		
-		
-		
-		
-		
 }

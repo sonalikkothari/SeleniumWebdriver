@@ -20,7 +20,7 @@ import com.google.common.base.Predicate;
 public class Waits {
 		
 		WebDriver driver  = new ChromeDriver();
-	
+		WebElement element = null;
 	
 		public String implicitWait() {
 		
@@ -33,7 +33,7 @@ public class Waits {
 		
 		driver.findElement(By.linkText("Subjects")).click();
 		
-		WebElement element = driver.findElement(By.cssSelector(".text-display-1.margin-none"));
+		element = driver.findElement(By.cssSelector(".text-display-1.margin-none"));
 		gTxt = (element.getText());
 		
 		System.out.println("txt::" +gTxt);
@@ -43,10 +43,11 @@ public class Waits {
 	}
 
 	
-	public void explicitWait() {
+	public String explicitWait() {
 		
 		
-		WebElement element;
+		String getAtri;
+		
 		driver.get("https://dev.talentscreen.io/#/website-pages/home");
 		driver.manage().window().maximize();
 		
@@ -69,9 +70,12 @@ public class Waits {
 		System.out.println(driver.findElement(By.xpath("//*[@id='candidateCountUp']")).getAttribute("class"));*/
 		
 		element = explwait.until(function);
-		System.out.println("Attribute:: "+element.getAttribute("class"));
+		getAtri = element.getAttribute("class");
+		
+		System.out.println("Attribute:: "+getAtri);
 	
 		driver.quit();
+		return getAtri;
 	}
 	
 	Function<WebDriver,WebElement> function = new Function<WebDriver,WebElement> () {
@@ -80,9 +84,8 @@ public class Waits {
 		public WebElement apply(WebDriver arg0) {
 			// TODO Auto-generated method stub
 			
-			//WebDriver driver;
-			WebElement element = 
-						driver.findElement(By.xpath("//*[@id='candidateCountUp']"));
+			
+		 element = driver.findElement(By.xpath("//*[@id='candidateCountUp']"));
 			return element;
 		}
 
@@ -119,9 +122,9 @@ public class Waits {
 			public boolean  apply(WebDriver arg0) {
 				// TODO Auto-generated method stub
 				
-				WebElement elem  = driver.findElement(By.xpath("//*[@class='section section-four ng-scope fp-section fp-table active']/div/div/h2"));
-				System.out.println("Text::::" +elem.getAttribute("class"));
-				System.out.println("Text::::" +elem.getTagName());
+				element  = driver.findElement(By.xpath("//*[@class='section section-four ng-scope fp-section fp-table active']/div/div/h2"));
+				System.out.println("Text::::" +element.getAttribute("class"));
+				System.out.println("Text::::" +element.getTagName());
 				return true;
 			}
 			
